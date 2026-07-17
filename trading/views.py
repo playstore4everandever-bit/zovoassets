@@ -117,44 +117,61 @@ def execute_trade(request):
 
 TWELVE_DATA_API_KEY = '5f9fcffd7dd44e128fb7bce7310d0e50'
 
-SYMBOL_MAP = {
-    'BTC': 'BTC/USD', 'ETH': 'ETH/USD', 'BNB': 'BNB/USD',
-    'SOL': 'SOL/USD', 'XRP': 'XRP/USD', 'ADA': 'ADA/USD',
-    'DOGE': 'DOGE/USD', 'AVAX': 'AVAX/USD',
-    'AAPL': 'AAPL', 'TSLA': 'TSLA', 'NVDA': 'NVDA',
-    'MSFT': 'MSFT', 'AMZN': 'AMZN', 'GOOG': 'GOOG', 'META': 'META',
+COINGECKO_IDS = {
+    'BTC': 'bitcoin', 'ETH': 'ethereum', 'BNB': 'binancecoin',
+    'SOL': 'solana', 'XRP': 'ripple', 'ADA': 'cardano',
+    'DOGE': 'dogecoin', 'AVAX': 'avalanche-2',
 }
 
+STOCK_SYMBOLS = ['AAPL', 'TSLA', 'NVDA', 'MSFT', 'AMZN', 'GOOG', 'META']
+
 def price_feed(request):
+    from django.core.cache import cache
     assets = Asset.objects.filter(is_active=True)
     prices = {}
 
-    # Try cache first — only call Twelve Data every 60 seconds
     cached = cache.get('live_prices')
     if cached:
         return JsonResponse({'prices': cached})
 
-    symbols = ','.join(SYMBOL_MAP.get(a.symbol, a.symbol) for a in assets)
+    live = {}
 
+    # --- CoinGecko for crypto (free, no limits) ---
     try:
-        response = requests.get(
-            'https://api.twelvedata.com/price',
-            params={'symbol': symbols, 'apikey': TWELVE_DATA_API_KEY},
+        ids = ','.join(COINGECKO_IDS.values())
+        r = requests.get(
+            'https://api.coingecko.com/api/v3/simple/price',
+            params={'ids': ids, 'vs_currencies': 'usd'},
             timeout=5
         )
-        data = response.json()
+        cg_data = r.json()
+        for symbol, cg_id in COINGECKO_IDS.items():
+            if cg_id in cg_data:
+                live[symbol] = cg_data[cg_id]['usd']
     except Exception:
-        data = {}
+        pass
 
-    for asset in assets:
-        td_symbol = SYMBOL_MAP.get(asset.symbol, asset.symbol)
-        try:
-            raw = data.get(td_symbol, {})
+    # --- Twelve Data for stocks ---
+    try:
+        td_symbols = ','.join(STOCK_SYMBOLS)
+        r = requests.get(
+            'https://api.twelvedata.com/price',
+            params={'symbol': td_symbols, 'apikey': TWELVE_DATA_API_KEY},
+            timeout=5
+        )
+        td_data = r.json()
+        for symbol in STOCK_SYMBOLS:
+            raw = td_data.get(symbol, {})
             if 'price' in raw:
-                asset.current_price = Decimal(str(raw['price']))
-                asset.save(update_fields=['current_price'])
-        except Exception:
-            pass
+                live[symbol] = float(raw['price'])
+    except Exception:
+        pass
+
+    # --- Update DB and build response ---
+    for asset in assets:
+        if asset.symbol in live:
+            asset.current_price = Decimal(str(live[asset.symbol]))
+            asset.save(update_fields=['current_price'])
 
         prices[asset.symbol] = {
             'price': float(asset.current_price),
@@ -162,9 +179,7 @@ def price_feed(request):
             'up': asset.current_price >= asset.base_price,
         }
 
-    # Cache for 60 seconds
     cache.set('live_prices', prices, 60)
-
     return JsonResponse({'prices': prices})
 
 
