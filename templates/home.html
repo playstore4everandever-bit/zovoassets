@@ -25,40 +25,22 @@
     body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
     h1,h2,h3,h4,h5 { font-family: 'Inter', sans-serif; }
 
-    /* NAV */
-    .znav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      padding: 18px 0;
-      background: rgba(6,9,15,0.88);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(26,39,64,0.6);
-    }
+    .znav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 18px 0; background: rgba(6,9,15,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(26,39,64,0.6); }
     .znav .container { display: flex; align-items: center; justify-content: space-between; }
-    .znav-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; color: var(--accent); text-decoration: none; }
+    .znav-brand { font-weight: 800; font-size: 22px; color: var(--accent); text-decoration: none; }
     .znav-brand span { color: var(--text); }
     .znav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
     .znav-links a { color: var(--muted); font-size: 14px; font-weight: 500; text-decoration: none; transition: color .2s; }
     .znav-links a:hover { color: var(--text); }
     .btn-nav-login { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 9px 22px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; transition: all .2s; }
     .btn-nav-login:hover { border-color: var(--accent); color: var(--accent); }
-    .btn-nav-cta { background: var(--accent); color: #030a06; padding: 9px 22px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; font-family: 'Syne', sans-serif; transition: all .2s; }
+    .btn-nav-cta { background: var(--accent); color: #030a06; padding: 9px 22px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all .2s; }
     .btn-nav-cta:hover { background: #00e6aa; transform: translateY(-1px); color: #030a06; }
     .nav-toggler { display: none; background: none; border: 1px solid var(--border); padding: 6px 10px; border-radius: 6px; cursor: pointer; color: var(--text); font-size: 18px; }
 
-    /* HERO */
     .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 60% at 10% 50%, rgba(0,200,150,.07) 0%, transparent 55%),
-                  radial-gradient(ellipse 60% 80% at 90% 20%, rgba(0,128,255,.06) 0%, transparent 55%),
-                  radial-gradient(ellipse 40% 40% at 50% 90%, rgba(245,166,35,.04) 0%, transparent 50%);
-    }
-    .hero-grid {
-      position: absolute; inset: 0; z-index: 0;
-      background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-    }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 10% 50%, rgba(0,200,150,.07) 0%, transparent 55%), radial-gradient(ellipse 60% 80% at 90% 20%, rgba(0,128,255,.06) 0%, transparent 55%), radial-gradient(ellipse 40% 40% at 50% 90%, rgba(245,166,35,.04) 0%, transparent 50%); }
+    .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
     .hero .container { position: relative; z-index: 1; }
     .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,200,150,.1); border: 1px solid rgba(0,200,150,.2); color: var(--accent); font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 24px; }
     .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
@@ -68,7 +50,7 @@
     .hero h1 .hl2 { color: var(--gold); }
     .hero-sub { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 520px; margin-bottom: 36px; }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
-    .btn-hero-primary { background: var(--accent); color: #030a06; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; padding: 14px 32px; border-radius: 10px; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-hero-primary { background: var(--accent); color: #030a06; font-weight: 700; font-size: 15px; padding: 14px 32px; border-radius: 10px; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
     .btn-hero-primary:hover { background: #00e6aa; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,200,150,.3); color: #030a06; }
     .btn-hero-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); font-size: 15px; padding: 14px 32px; border-radius: 10px; text-decoration: none; transition: all .2s; display: inline-flex; align-items: center; gap: 8px; }
     .btn-hero-ghost:hover { border-color: var(--muted); color: var(--text); }
@@ -76,56 +58,50 @@
     .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
     .trust-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 
-    /* HERO CARD */
     .hero-card { background: rgba(13,21,37,.85); border: 1px solid var(--border); border-radius: 20px; backdrop-filter: blur(20px); overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.5); }
     .hero-card-top { padding: 22px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; justify-content: space-between; }
     .card-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-    .card-value { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 800; color: var(--accent); }
+    .card-value { font-size: 30px; font-weight: 800; color: var(--accent); }
     .card-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
     .live-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(0,200,150,.1); color: var(--accent); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 6px; white-space: nowrap; }
     .live-badge::before { content: ''; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
     .hero-card-body { padding: 8px 24px; }
     .ticker-row { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid rgba(26,39,64,.5); font-size: 13px; }
     .ticker-row:last-child { border-bottom: none; }
-    .ticker-sym { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; }
+    .ticker-sym { font-weight: 700; font-size: 13px; }
     .ticker-name { color: var(--muted); font-size: 11px; margin-top: 1px; }
     .ticker-up { color: var(--accent); font-weight: 600; font-size: 12px; }
     .ticker-down { color: #ff4757; font-weight: 600; font-size: 12px; }
     .hero-card-footer { padding: 14px 24px; background: rgba(0,200,150,.04); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--muted); }
 
-    /* TICKER BAR */
     .ticker-bar { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; overflow: hidden; white-space: nowrap; }
     .ticker-inner { display: inline-flex; gap: 40px; animation: marquee 30s linear infinite; }
     @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
     .t-item { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; }
-    .t-item .sym { font-family: 'Syne', sans-serif; font-weight: 700; }
+    .t-item .sym { font-weight: 700; }
     .t-up { color: var(--accent); }
     .t-down { color: #ff4757; }
 
-    /* STATS */
     .stats-section { padding: 80px 0; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .zstat { text-align: center; padding: 16px; border-right: 1px solid var(--border); }
     .zstat:last-child { border-right: none; }
-    .zstat-num { font-family: 'Syne', sans-serif; font-size: 2.6rem; font-weight: 800; color: var(--text); }
+    .zstat-num { font-size: 2.6rem; font-weight: 800; color: var(--text); }
     .zstat-num span { color: var(--accent); }
     .zstat-label { color: var(--muted); font-size: 14px; margin-top: 4px; }
 
-    /* SECTIONS */
     .sec-tag { display: inline-block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 14px; }
     .sec-title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
     .sec-sub { color: var(--muted); font-size: 16px; line-height: 1.7; }
 
-    /* HOW IT WORKS */
     .how-section { padding: 100px 0; }
     .step-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all .3s; height: 100%; }
     .step-card:hover { border-color: rgba(0,200,150,.3); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
-    .step-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .step-num { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
     .step-num::after { content: ''; flex: 1; height: 1px; background: var(--border); }
     .step-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 22px; }
     .step-card h5 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
     .step-card p { color: var(--muted); font-size: 14px; line-height: 1.7; }
 
-    /* PLANS */
     .plans-section { padding: 100px 0; background: var(--bg2); border-top: 1px solid var(--border); }
     .plan-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all .3s; height: 100%; position: relative; overflow: hidden; }
     .plan-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
@@ -135,9 +111,9 @@
     .plan-card.vip::before { background: #c084fc; }
     .plan-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,.4); }
     .plan-card.popular { border-color: var(--accent); }
-    .plan-popular-badge { position: absolute; top: 16px; right: 16px; background: var(--accent); color: #030a06; font-size: 10px; font-weight: 700; letter-spacing: .5px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; font-family: 'Syne', sans-serif; }
+    .plan-popular-badge { position: absolute; top: 16px; right: 16px; background: var(--accent); color: #030a06; font-size: 10px; font-weight: 700; letter-spacing: .5px; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
     .plan-name { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-    .plan-roi { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; line-height: 1; }
+    .plan-roi { font-size: 3rem; font-weight: 800; line-height: 1; }
     .plan-roi span { font-size: 1.2rem; color: var(--muted); }
     .plan-duration { font-size: 13px; color: var(--muted); margin: 6px 0 20px; }
     .plan-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
@@ -145,12 +121,11 @@
     .plan-feature::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
     .plan-min { font-size: 12px; color: var(--muted); margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
     .plan-min strong { color: var(--text); }
-    .btn-plan { display: block; text-align: center; margin-top: 20px; padding: 12px; border-radius: 10px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; text-decoration: none; transition: all .2s; border: 1px solid var(--border); color: var(--text); background: transparent; }
+    .btn-plan { display: block; text-align: center; margin-top: 20px; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; transition: all .2s; border: 1px solid var(--border); color: var(--text); background: transparent; }
     .btn-plan:hover { border-color: var(--accent); color: var(--accent); }
     .plan-card.popular .btn-plan { background: var(--accent); color: #030a06; border-color: var(--accent); }
     .plan-card.popular .btn-plan:hover { background: #00e6aa; color: #030a06; }
 
-    /* MANAGEMENT */
     .mgmt-section { padding: 100px 0; }
     .team-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all .3s; height: 100%; }
     .team-card:hover { transform: translateY(-6px); border-color: rgba(0,200,150,.25); box-shadow: 0 24px 48px rgba(0,0,0,.4); }
@@ -158,35 +133,28 @@
     .team-card:hover .team-img { filter: grayscale(0%); }
     .team-body { padding: 22px 24px; }
     .team-role { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
-    .team-name { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .team-name { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
     .team-bio { font-size: 13px; color: var(--muted); line-height: 1.7; }
-    .team-contact { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
-    .team-contact a { font-size: 12px; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 6px; margin-bottom: 6px; transition: color .2s; }
-    .team-contact a:hover { color: var(--accent); }
-    .team-contact a:last-child { margin-bottom: 0; }
 
-    /* TRUST */
     .trust-section { padding: 80px 0; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; }
     .trust-box { background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; text-align: center; transition: all .2s; }
     .trust-box:hover { border-color: rgba(0,200,150,.2); transform: translateY(-2px); }
     .trust-icon { font-size: 28px; margin-bottom: 12px; }
-    .trust-box h6 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .trust-box h6 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
     .trust-box p { font-size: 12px; color: var(--muted); line-height: 1.6; }
 
-    /* CTA */
     .cta-section { padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
     .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(0,200,150,.06) 0%, transparent 70%); }
     .cta-section .container { position: relative; z-index: 1; }
     .cta-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px; }
     .cta-section p { color: var(--muted); font-size: 17px; max-width: 500px; margin: 0 auto 36px; line-height: 1.7; }
 
-    /* FOOTER */
     footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 70px 0 30px; }
-    .foot-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; color: var(--accent); margin-bottom: 12px; }
+    .foot-brand { font-weight: 800; font-size: 22px; color: var(--accent); margin-bottom: 12px; }
     .foot-brand span { color: var(--text); }
     .foot-desc { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 280px; margin-bottom: 20px; }
-    .foot-title { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); margin-bottom: 16px; }
+    .foot-title { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); margin-bottom: 16px; }
     .foot-links { list-style: none; }
     .foot-links li { margin-bottom: 10px; }
     .foot-links a { color: var(--muted); font-size: 14px; text-decoration: none; transition: color .2s; }
@@ -195,7 +163,6 @@
     .foot-bottom p { color: var(--muted); font-size: 13px; }
     .foot-disclaimer { font-size: 11px; color: var(--muted); margin-top: 16px; line-height: 1.6; }
 
-    /* RESPONSIVE */
     @media(max-width: 991px) {
       .znav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 20px; flex-direction: column; gap: 16px; }
       .znav-links.open { display: flex; }
@@ -213,7 +180,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="znav">
   <div class="container">
     <a class="znav-brand" href="#">Zovo<span>Assets</span></a>
@@ -228,7 +194,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -262,30 +227,30 @@
             </div>
             <div class="live-badge">● LIVE</div>
           </div>
-          <div class="hero-card-body">
-            <div class="ticker-row">
+          <div class="hero-card-body" id="live-prices">
+            <div class="ticker-row" data-sym="BTC">
               <div><div class="ticker-sym">BTC</div><div class="ticker-name">Bitcoin</div></div>
-              <div style="text-align:right;"><div style="font-size:13px;font-weight:600;">$67,420</div><div class="ticker-up">▲ +2.41%</div></div>
+              <div style="text-align:right;"><div class="price" style="font-size:13px;font-weight:600;">$67,420</div><div class="change ticker-up">▲ +2.41%</div></div>
             </div>
-            <div class="ticker-row">
+            <div class="ticker-row" data-sym="ETH">
               <div><div class="ticker-sym">ETH</div><div class="ticker-name">Ethereum</div></div>
-              <div style="text-align:right;"><div style="font-size:13px;font-weight:600;">$3,512</div><div class="ticker-up">▲ +1.87%</div></div>
+              <div style="text-align:right;"><div class="price" style="font-size:13px;font-weight:600;">$3,512</div><div class="change ticker-up">▲ +1.87%</div></div>
             </div>
-            <div class="ticker-row">
+            <div class="ticker-row" data-sym="NVDA">
               <div><div class="ticker-sym">NVDA</div><div class="ticker-name">NVIDIA Corp.</div></div>
-              <div style="text-align:right;"><div style="font-size:13px;font-weight:600;">$875.40</div><div class="ticker-down">▼ -0.62%</div></div>
+              <div style="text-align:right;"><div class="price" style="font-size:13px;font-weight:600;">$875.40</div><div class="change ticker-down">▼ -0.62%</div></div>
             </div>
-            <div class="ticker-row">
+            <div class="ticker-row" data-sym="SOL">
               <div><div class="ticker-sym">SOL</div><div class="ticker-name">Solana</div></div>
-              <div style="text-align:right;"><div style="font-size:13px;font-weight:600;">$176.88</div><div class="ticker-up">▲ +3.14%</div></div>
+              <div style="text-align:right;"><div class="price" style="font-size:13px;font-weight:600;">$176.88</div><div class="change ticker-up">▲ +3.14%</div></div>
             </div>
-            <div class="ticker-row">
+            <div class="ticker-row" data-sym="AAPL">
               <div><div class="ticker-sym">AAPL</div><div class="ticker-name">Apple Inc.</div></div>
-              <div style="text-align:right;"><div style="font-size:13px;font-weight:600;">$189.22</div><div class="ticker-up">▲ +0.53%</div></div>
+              <div style="text-align:right;"><div class="price" style="font-size:13px;font-weight:600;">$189.22</div><div class="change ticker-up">▲ +0.53%</div></div>
             </div>
           </div>
           <div class="hero-card-footer">
-            <span>Prices update every 30s</span>
+            <span id="last-updated">Prices update every 30s</span>
             <span style="color:var(--accent);font-weight:600;">99.2% withdrawal success</span>
           </div>
         </div>
@@ -294,9 +259,8 @@
   </div>
 </section>
 
-<!-- TICKER BAR -->
 <div class="ticker-bar">
-  <div class="ticker-inner">
+  <div class="ticker-inner" id="ticker-bar-inner">
     <span class="t-item"><span class="sym">BTC</span> $67,420 <span class="t-up">+2.41%</span></span>
     <span class="t-item"><span class="sym">ETH</span> $3,512 <span class="t-up">+1.87%</span></span>
     <span class="t-item"><span class="sym">SOL</span> $176.88 <span class="t-up">+3.14%</span></span>
@@ -320,7 +284,6 @@
   </div>
 </div>
 
-<!-- STATS -->
 <section class="stats-section">
   <div class="container">
     <div class="row g-0">
@@ -332,7 +295,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section class="how-section" id="how">
   <div class="container">
     <div class="row align-items-center g-5 mb-5">
@@ -371,7 +333,6 @@
   </div>
 </section>
 
-<!-- PLANS -->
 <section class="plans-section" id="plans">
   <div class="container">
     <div class="text-center mb-5">
@@ -386,7 +347,7 @@
           <div class="plan-roi" style="color:#00c896;">5<span>% ROI</span></div>
           <div class="plan-duration">7 day duration</div>
           <hr class="plan-divider">
-          <div class="plan-feature">Fixed 5% return guaranteed</div>
+          <div class="plan-feature">Fixed 5% return</div>
           <div class="plan-feature">Dashboard tracking</div>
           <div class="plan-feature">Live trading access</div>
           <div class="plan-feature">Email support</div>
@@ -401,7 +362,7 @@
           <div class="plan-roi" style="color:#0080ff;">10<span>% ROI</span></div>
           <div class="plan-duration">14 day duration</div>
           <hr class="plan-divider">
-          <div class="plan-feature">Fixed 10% return guaranteed</div>
+          <div class="plan-feature">Fixed 10% return</div>
           <div class="plan-feature">Priority dashboard</div>
           <div class="plan-feature">Live trading access</div>
           <div class="plan-feature">Loan eligibility</div>
@@ -415,7 +376,7 @@
           <div class="plan-roi" style="color:#f5a623;">15<span>% ROI</span></div>
           <div class="plan-duration">21 day duration</div>
           <hr class="plan-divider">
-          <div class="plan-feature">Fixed 15% return guaranteed</div>
+          <div class="plan-feature">Fixed 15% return</div>
           <div class="plan-feature">Advanced analytics</div>
           <div class="plan-feature">Full trading suite</div>
           <div class="plan-feature">Priority support</div>
@@ -429,7 +390,7 @@
           <div class="plan-roi" style="color:#c084fc;">20<span>% ROI</span></div>
           <div class="plan-duration">30 day duration</div>
           <hr class="plan-divider">
-          <div class="plan-feature">Fixed 20% return guaranteed</div>
+          <div class="plan-feature">Fixed 20% return</div>
           <div class="plan-feature">Dedicated account manager</div>
           <div class="plan-feature">Full platform access</div>
           <div class="plan-feature">24/7 VIP support line</div>
@@ -441,7 +402,6 @@
   </div>
 </section>
 
-<!-- MANAGEMENT -->
 <section class="mgmt-section" id="team">
   <div class="container">
     <div class="text-center mb-5">
@@ -487,16 +447,6 @@
             <div class="team-role">Marketing &amp; Sales Manager</div>
             <div class="team-name">Benjamin Oliver</div>
             <p class="team-bio">Bitcoin trader and investment strategist with deep expertise in growing fintech user bases and driving platform trust at scale.</p>
-            <div class="team-contact">
-              <a href="mailto:benjaminoliver.a@outlook.com">
-                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                benjaminoliver.a@outlook.com
-              </a>
-              <a href="https://wa.me/12138343950" target="_blank">
-                <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.122 1.527 5.855L.057 23.5l5.788-1.517A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.869 0-3.628-.49-5.148-1.345L2.5 21.85l1.218-4.239A9.961 9.961 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-                WhatsApp: +1 213 834 3950
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -504,7 +454,6 @@
   </div>
 </section>
 
-<!-- TRUST SIGNALS -->
 <section class="trust-section">
   <div class="container">
     <div class="text-center mb-5">
@@ -515,14 +464,13 @@
       <div class="trust-box"><div class="trust-icon">🔒</div><h6>256-bit SSL Encryption</h6><p>All data and transactions protected with bank-grade encryption standards.</p></div>
       <div class="trust-box"><div class="trust-icon">✅</div><h6>KYC Verified Users</h6><p>Full identity verification ensures a safe, compliant investment environment.</p></div>
       <div class="trust-box"><div class="trust-icon">⚡</div><h6>Instant Withdrawals</h6><p>Withdraw your funds and profits at any time with zero delays.</p></div>
-      <div class="trust-box"><div class="trust-icon">📋</div><h6>Transparent Returns</h6><p>Fixed ROI plans with clear terms — no hidden fees, no surprises.</p></div>
+      <div class="trust-box"><div class="trust-icon">📋</div><h6>Transparent Returns</h6><p>Clear terms on all plans — no hidden fees, no surprises.</p></div>
       <div class="trust-box"><div class="trust-icon">🌍</div><h6>Global Investors</h6><p>Trusted by investors in 40+ countries across North America, Europe, and Africa.</p></div>
-      <div class="trust-box"><div class="trust-icon">🛡️</div><h6>Regulated &amp; Compliant</h6><p>Operating within financial compliance frameworks for your peace of mind.</p></div>
+      <div class="trust-box"><div class="trust-icon">🛡️</div><h6>Platform Security</h6><p>Enterprise-grade infrastructure keeping your account and funds protected.</p></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section">
   <div class="container">
     <h2>Ready to Start Growing <span style="color:var(--accent);">Your Wealth?</span></h2>
@@ -538,16 +486,15 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="row g-5">
-      <div class="col-lg-4">
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-3">
         <div class="foot-brand">Zovo<span>Assets</span></div>
         <p class="foot-desc">A modern fintech and investment platform helping global investors grow wealth securely through fixed-return plans, crypto trading, and intelligent portfolio tools.</p>
-        <p style="color:var(--muted);font-size:13px;">support@zovoassets.com</p>
+        <p style="color:var(--muted);font-size:13px;margin-top:8px;">support@zovoassets.com</p>
       </div>
-      <div class="col-6 col-lg-2">
+      <div class="col-6 col-md-3 col-lg-2 offset-lg-1">
         <div class="foot-title">Platform</div>
         <ul class="foot-links">
           <li><a href="#how">How It Works</a></li>
@@ -556,7 +503,7 @@
           <li><a href="/register/">Register</a></li>
         </ul>
       </div>
-      <div class="col-6 col-lg-2">
+      <div class="col-6 col-md-3 col-lg-2">
         <div class="foot-title">Company</div>
         <ul class="foot-links">
           <li><a href="#team">Management</a></li>
@@ -565,7 +512,7 @@
           <li><a href="#">Contact</a></li>
         </ul>
       </div>
-      <div class="col-lg-4">
+      <div class="col-12 col-md-6 col-lg-3 offset-lg-1">
         <div class="foot-title">Legal</div>
         <ul class="foot-links">
           <li><a href="#">Terms of Service</a></li>
@@ -573,16 +520,65 @@
           <li><a href="#">Risk Disclosure</a></li>
           <li><a href="#">AML Policy</a></li>
         </ul>
-        <p class="foot-disclaimer">Investment involves risk. Past performance does not guarantee future results. ZovoAssets is an investment platform with trusted success record.</p>
+        <p class="foot-disclaimer">Investment involves risk. Past performance does not guarantee future results. ZovoAssets is a simulation investment platform.</p>
       </div>
     </div>
     <div class="foot-bottom">
-      <p>© 2025 ZovoAssets. All rights reserved.</p>
+      <p>© 2026 ZovoAssets. All rights reserved.</p>
       <p>Built with security &amp; trust.</p>
     </div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Live price feed — pulls from your /trading/api/prices/ endpoint
+async function fetchPrices() {
+  try {
+    const res = await fetch('/trading/api/prices/');
+    if (!res.ok) return;
+    const data = await res.json();
+    const prices = data.prices;
+
+    // Update hero card rows
+    document.querySelectorAll('#live-prices .ticker-row').forEach(row => {
+      const sym = row.dataset.sym;
+      if (!prices[sym]) return;
+      const p = prices[sym];
+      const price = p.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      const change = p.change_24h.toFixed(2);
+      const up = p.up;
+      row.querySelector('.price').textContent = '$' + price;
+      const changeEl = row.querySelector('.change');
+      changeEl.textContent = (up ? '▲ +' : '▼ ') + change + '%';
+      changeEl.className = 'change ' + (up ? 'ticker-up' : 'ticker-down');
+    });
+
+    // Update ticker bar
+    const syms = Object.keys(prices);
+    const items = syms.map(sym => {
+      const p = prices[sym];
+      const price = p.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      const change = p.change_24h.toFixed(2);
+      const cls = p.up ? 't-up' : 't-down';
+      const sign = p.up ? '+' : '';
+      return `<span class="t-item"><span class="sym">${sym}</span> $${price} <span class="${cls}">${sign}${change}%</span></span>`;
+    });
+    const doubled = [...items, ...items].join('');
+    document.getElementById('ticker-bar-inner').innerHTML = doubled;
+
+    // Update footer timestamp
+    const now = new Date();
+    document.getElementById('last-updated').textContent = 'Updated ' + now.toLocaleTimeString();
+
+  } catch(e) {
+    // silently fail — static prices remain shown
+  }
+}
+
+// Fetch immediately then every 30 seconds
+fetchPrices();
+setInterval(fetchPrices, 30000);
+</script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 import json
 import random
+import requests
 from decimal import Decimal, InvalidOperation
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -113,20 +114,49 @@ def execute_trade(request):
         return JsonResponse({"error": str(e)}, status=400)
 
 
+TWELVE_DATA_API_KEY = '5f9fcffd7dd44e128fb7bce7310d0e50'
+
+SYMBOL_MAP = {
+    'BTC': 'BTC/USD', 'ETH': 'ETH/USD', 'BNB': 'BNB/USD',
+    'SOL': 'SOL/USD', 'XRP': 'XRP/USD', 'ADA': 'ADA/USD',
+    'DOGE': 'DOGE/USD', 'AVAX': 'AVAX/USD',
+    'AAPL': 'AAPL', 'TSLA': 'TSLA', 'NVDA': 'NVDA',
+    'MSFT': 'MSFT', 'AMZN': 'AMZN', 'GOOG': 'GOOG', 'META': 'META',
+}
+
 @login_required
 def price_feed(request):
     assets = Asset.objects.filter(is_active=True)
     prices = {}
+    symbols = ','.join(SYMBOL_MAP.get(a.symbol, a.symbol) for a in assets)
+
+    try:
+        response = requests.get(
+            'https://api.twelvedata.com/price',
+            params={'symbol': symbols, 'apikey': TWELVE_DATA_API_KEY},
+            timeout=5
+        )
+        data = response.json()
+    except Exception:
+        data = {}
+
     for asset in assets:
-        drift = Decimal(str(random.uniform(-0.0025, 0.0025)))
-        asset.current_price = max(Decimal("0.01"), asset.current_price * (1 + drift))
-        asset.save(update_fields=["current_price"])
+        td_symbol = SYMBOL_MAP.get(asset.symbol, asset.symbol)
+        try:
+            raw = data.get(td_symbol, {})
+            if 'price' in raw:
+                asset.current_price = Decimal(str(raw['price']))
+                asset.save(update_fields=['current_price'])
+        except Exception:
+            pass
+
         prices[asset.symbol] = {
-            "price": float(asset.current_price),
-            "change_24h": asset.change_24h,
-            "up": asset.current_price >= asset.base_price,
+            'price': float(asset.current_price),
+            'change_24h': asset.change_24h,
+            'up': asset.current_price >= asset.base_price,
         }
-    return JsonResponse({"prices": prices})
+
+    return JsonResponse({'prices': prices})
 
 
 @login_required
