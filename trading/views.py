@@ -1,6 +1,7 @@
 import json
 import random
 import requests
+from django.core.cache import cache
 from decimal import Decimal, InvalidOperation
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -127,6 +128,12 @@ SYMBOL_MAP = {
 def price_feed(request):
     assets = Asset.objects.filter(is_active=True)
     prices = {}
+
+    # Try cache first — only call Twelve Data every 60 seconds
+    cached = cache.get('live_prices')
+    if cached:
+        return JsonResponse({'prices': cached})
+
     symbols = ','.join(SYMBOL_MAP.get(a.symbol, a.symbol) for a in assets)
 
     try:
@@ -154,6 +161,9 @@ def price_feed(request):
             'change_24h': asset.change_24h,
             'up': asset.current_price >= asset.base_price,
         }
+
+    # Cache for 60 seconds
+    cache.set('live_prices', prices, 60)
 
     return JsonResponse({'prices': prices})
 
