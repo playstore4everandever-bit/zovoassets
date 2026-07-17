@@ -124,7 +124,6 @@ SYMBOL_MAP = {
     'MSFT': 'MSFT', 'AMZN': 'AMZN', 'GOOG': 'GOOG', 'META': 'META',
 }
 
-@login_required
 def price_feed(request):
     assets = Asset.objects.filter(is_active=True)
     prices = {}
