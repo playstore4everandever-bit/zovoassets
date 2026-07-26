@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView
 from core.sitemaps import StaticViewSitemap
 
 sitemaps = {
@@ -12,6 +13,7 @@ sitemaps = {
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
+    path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     path("", include("core.urls")),
     path("investments/", include("investments.urls")),
     path("loans/", include("loans.urls")),
