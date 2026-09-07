@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,11 +12,11 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get("DEBUG", "False") == "False"
 
 ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    ".railway.app",
-    "zovoassets.com",
-    "www.zovoassets.com",
+    'zovoassets.com',
+    'www.zovoassets.com',
+    'zovoassets.onrender.com',
+    '127.0.0.1',
+    'localhost',
 ]
 
 INSTALLED_APPS = [
@@ -70,10 +71,10 @@ TEMPLATES = [
 WSGI_APPLICATION = "zovoassets.wsgi.application"
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(
+        default='postgresql://zovoassets_user:WEUOkgIecWSV9K6l4vPDyuJOUNUMYmsi@dpg-dafiv48u01pc73ali2jg-a/zovoassets',
+        conn_max_age=600
+    )
 }
 
 # Railway Postgres
