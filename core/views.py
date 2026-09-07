@@ -115,3 +115,13 @@ def dashboard(request):
         "open_trades": open_trades,
         "trade_count": trade_count,
     })
+def contact(request):
+    return render(request, "core/contact.html")
+
+def about(request):
+    return render(request, "core/about.html")
+
+def careers(request):
+    return render(request, "core/careers.html")
+
+
