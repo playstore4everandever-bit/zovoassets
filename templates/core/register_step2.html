@@ -17,6 +17,7 @@
       </div>
       {% endfor %}
     </div>
+
     <div style="text-align:center;margin-bottom:2rem;">
       <p style="font-size:0.75rem;color:var(--text-muted);font-family:'Syne',sans-serif;text-transform:uppercase;letter-spacing:1px;">Step 2 of 3 — Choose Your Plan</p>
     </div>
@@ -27,13 +28,13 @@
     {% endfor %}
     {% endif %}
 
-    <form method="post">
+    <form method="post" id="plan-form">
       {% csrf_token %}
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.5rem;">
         {% for plan in plans %}
-        <label style="cursor:pointer;">
+        <label style="cursor:pointer;display:block;" onclick="selectPlan(this, '{{ plan.id }}')">
           <input type="radio" name="plan_id" value="{{ plan.id }}" style="display:none;" class="plan-radio">
-          <div class="plan-card z-card" style="height:100%;transition:all 0.2s;position:relative;{% if plan.name == 'VIP' %}border-color:var(--gold);{% endif %}">
+          <div class="plan-card z-card" id="plan-card-{{ plan.id }}" style="height:100%;transition:all 0.2s;position:relative;{% if plan.name == 'VIP' %}border-color:var(--gold);{% endif %}">
             {% if plan.name == 'VIP' %}
             <div style="position:absolute;top:-1px;right:16px;background:var(--gold);color:#000;font-size:0.65rem;font-weight:700;font-family:'Syne',sans-serif;padding:0.2rem 0.75rem;border-radius:0 0 8px 8px;text-transform:uppercase;letter-spacing:0.5px;">Best Returns</div>
             {% endif %}
@@ -53,13 +54,53 @@
         </label>
         {% endfor %}
       </div>
+
+      <div id="plan-error" style="display:none;color:#ff4757;font-size:0.85rem;margin-bottom:1rem;text-align:center;">
+        Please select a plan to continue.
+      </div>
+
       <button type="submit" class="btn-gold" style="width:100%;text-align:center;">Continue to Investment Amount →</button>
     </form>
   </div>
 </div>
+
 <style>
+.plan-card { border: 1px solid var(--border); }
 .plan-card:hover { border-color: rgba(201,168,76,0.5) !important; transform: translateY(-2px); }
-.plan-radio:checked + .plan-card { border-color: var(--gold) !important; background: rgba(201,168,76,0.05) !important; }
-.plan-radio:checked + .plan-card .plan-check { display: flex !important; }
+.plan-card.selected { border-color: var(--gold) !important; background: rgba(201,168,76,0.05) !important; }
+.plan-card.selected .plan-check { display: flex !important; }
 </style>
+
+<script>
+function selectPlan(label, planId) {
+  // Remove selected from all cards
+  document.querySelectorAll('.plan-card').forEach(function(card) {
+    card.classList.remove('selected');
+  });
+
+  // Mark the clicked card as selected
+  var card = document.getElementById('plan-card-' + planId);
+  if (card) {
+    card.classList.add('selected');
+  }
+
+  // Check the radio button
+  var radio = label.querySelector('.plan-radio');
+  if (radio) {
+    radio.checked = true;
+  }
+
+  // Hide error
+  document.getElementById('plan-error').style.display = 'none';
+}
+
+document.getElementById('plan-form').addEventListener('submit', function(e) {
+  var selected = document.querySelector('.plan-radio:checked');
+  if (!selected) {
+    e.preventDefault();
+    document.getElementById('plan-error').style.display = 'block';
+  }
+});
+</script>
+
 {% endblock %}
