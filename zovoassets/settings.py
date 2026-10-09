@@ -12,11 +12,11 @@ SECRET_KEY = os.environ.get(
 DEBUG = os.environ.get("DEBUG", "False") == "False"
 
 ALLOWED_HOSTS = [
-    'zovoassets.com',
-    'www.zovoassets.com',
-    'zovoassets.onrender.com',
-    '127.0.0.1',
-    'localhost',
+    "web-production-37d1e.up.railway.app",
+    "zovoassets.com",
+    "www.zovoassets.com",
+    "localhost",
+    "127.0.0.1",
 ]
 
 INSTALLED_APPS = [
@@ -71,21 +71,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "zovoassets.wsgi.application"
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://zovoassets_user:WEUOkgIecWSV9K6l4vPDyuJOUNUMYmsi@dpg-dafiv48u01pc73ali2jg-a/zovoassets',
-        conn_max_age=600
-    )
-}
+# Database configuration
+DATABASE_URL = os.environ.get("postgresql://postgres:urnBnrAnRIunskzEWvsFvolcuuiNpHnv@postgres.railway.internal:5432/railway")
 
-# Railway Postgres
-if os.environ.get("DATABASE_URL"):
-    import dj_database_url
-
-    DATABASES["default"] = dj_database_url.parse(
-        os.environ.get("DATABASE_URL"),
-        conn_max_age=600
-    )
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+        )
+    }
+else:
+    # Local development database
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 AUTH_USER_MODEL = "core.User"
 
